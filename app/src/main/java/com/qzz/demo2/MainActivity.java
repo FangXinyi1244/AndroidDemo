@@ -1,6 +1,7 @@
 package com.qzz.demo2;
 
 // MainActivity.java
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,10 +23,12 @@ public class MainActivity extends AppCompatActivity implements FragmentCallback 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        initViews();
-        setupViewPager();
-        setupBottomNavigation();
+        // 跳转到另一个Activity（例如 SecondActivity）
+        Intent intent = new Intent(MainActivity.this, TestViewActivity.class);
+        startActivity(intent);
+//        initViews();
+//        setupViewPager();
+//        setupBottomNavigation();
     }
 
     private void initViews() {

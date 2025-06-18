@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tool_icon_container" type="id" />
+    <item name="tool_name" type="id" />
+</resources>

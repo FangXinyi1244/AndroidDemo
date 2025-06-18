@@ -4,4 +4,10 @@
     <string name="How_are_you">How are you?</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title">大模型问答</string>
+    <string name="colorTheme_deep">深色主题</string>
+    <string name="colorTheme_light">浅色主题</string>
+    <string name="delete" >del</string>
+    <string name="text_prompt">请输入内容</string>
 </resources>

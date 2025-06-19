@@ -1,10 +1,15 @@
-package com.qzz.demo2;
+package com.qzz.demo2.adapter;
 
 // MainPagerAdapter.java
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.qzz.demo2.fragment.CategoryFragment;
+import com.qzz.demo2.fragment.HomeFragment;
+import com.qzz.demo2.fragment.ProfileFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 

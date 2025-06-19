@@ -1,4 +1,4 @@
-package com.qzz.demo2;
+package com.qzz.demo2.adapter;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.qzz.demo2.item.MessageItem;
+import com.qzz.demo2.R;
+import com.qzz.demo2.model.vo.MessageItem;
 
 import java.util.List;
 

@@ -9,6 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.qzz.demo2.callback.FragmentCallback;
+import com.qzz.demo2.fragment.CategoryFragment;
+import com.qzz.demo2.fragment.HomeFragment;
+import com.qzz.demo2.fragment.ProfileFragment;
+import com.qzz.demo2.adapter.MainPagerAdapter;
+
 public class MainActivity extends AppCompatActivity implements FragmentCallback {
 
     private ViewPager viewPager;
@@ -24,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements FragmentCallback 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // 跳转到另一个Activity（例如 SecondActivity）
-        Intent intent = new Intent(MainActivity.this, TestViewActivity.class);
+        Intent intent = new Intent(MainActivity.this, ServiceActivity.class);
         startActivity(intent);
 //        initViews();
 //        setupViewPager();

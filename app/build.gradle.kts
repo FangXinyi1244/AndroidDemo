@@ -14,9 +14,18 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+//        multiDexEnabled = true
+
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
+//        debug {
+//            isMinifyEnabled = false
+//            applicationIdSuffix = ".debug"
+//            versionNameSuffix = "-debug"
+//        }
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -28,6 +37,10 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        aidl = true
     }
 }
 

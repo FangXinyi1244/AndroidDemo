@@ -4,15 +4,12 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.BackgroundColorSpan;
-import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.view.Gravity;
 import android.view.View;
@@ -33,8 +30,9 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.qzz.demo2.item.MessageItem;
-import com.qzz.demo2.item.ToolItem;
+import com.qzz.demo2.adapter.MessageListAdapter;
+import com.qzz.demo2.model.vo.MessageItem;
+import com.qzz.demo2.model.vo.ToolItem;
 
 import java.io.InputStream;
 import java.util.ArrayList;

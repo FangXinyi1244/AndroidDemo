@@ -8,6 +8,8 @@
     <string name="title">大模型问答</string>
     <string name="colorTheme_deep">深色主题</string>
     <string name="colorTheme_light">浅色主题</string>
-    <string name="delete" >del</string>
+    <string name="delete">del</string>
     <string name="text_prompt">请输入内容</string>
+
+    <string name="service_btn">服务测试</string>
 </resources>

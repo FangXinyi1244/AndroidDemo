@@ -1,4 +1,4 @@
-package com.qzz.demo2.item;
+package com.qzz.demo2.model.vo;
 
 public class MessageItem {
     private String content;

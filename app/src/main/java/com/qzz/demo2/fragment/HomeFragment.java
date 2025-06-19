@@ -1,4 +1,6 @@
-package com.qzz.demo2;
+package com.qzz.demo2.fragment;
+
+import com.qzz.demo2.fragment.base.BaseFragment;
 
 public class HomeFragment extends BaseFragment {
 
@@ -18,10 +20,10 @@ public class HomeFragment extends BaseFragment {
         return "HOME";
     }
 
-    @Override
-    protected String getCustomMessage() {
-        return "首页数据已加载完成，当前有 " + (int)(Math.random() * 100) + " 条新内容";
-    }
+//    @Override
+//    protected String getCustomMessage() {
+//        return "首页数据已加载完成，当前有 " + (int)(Math.random() * 100) + " 条新内容";
+//    }
 
     @Override
     protected void onCustomActionClick() {

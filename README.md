@@ -36,5 +36,23 @@ Activity中布局相关
 
 
 
+## 实习第四天
+
+介绍安卓开发四大组件：Activity、Service、BroadcastReciever、ContenProvider
+
+Activity重点说明实际生命周期管理、intent通信连接方式
+
+Service负责非用户交互的后台服务程序，基本实现需要继承实现Service类并且在注册文件中声明。
+
+Service核心介绍通信实现机制，通过Binder机制管理资源与共享（零拷贝），通过实例化Binder对象获取Service对象，实现进程内通信；通过AIDL方式获取Service代理对象，实现跨进程通信
+
+BroadcastReciever消息广播者负责监听与发布消息，实现方式分为静态广播和动态广播，静态需要在注册文件中注册声明，动态编写BroadcastReciever继承类，重写相关监听方法。消息广播者在对应监听对象销毁时需要显式销毁，防止资源损耗
+
+ContenProvider内容提供者负责提供数据服务，在注册文件中声明并实现ContenProvider继承类，进行数据操作
+
+
+
+
+
 
 

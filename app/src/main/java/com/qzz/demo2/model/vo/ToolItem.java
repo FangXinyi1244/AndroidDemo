@@ -1,4 +1,4 @@
-package com.qzz.demo2.item;
+package com.qzz.demo2.model.vo;
 
 public class ToolItem {
     private String icon;        // 文字图标（表情符号等）

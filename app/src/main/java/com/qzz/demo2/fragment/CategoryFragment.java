@@ -1,6 +1,8 @@
-package com.qzz.demo2;
+package com.qzz.demo2.fragment;
 
 import android.widget.TextView;
+
+import com.qzz.demo2.fragment.base.BaseFragment;
 
 public class CategoryFragment extends BaseFragment {
 

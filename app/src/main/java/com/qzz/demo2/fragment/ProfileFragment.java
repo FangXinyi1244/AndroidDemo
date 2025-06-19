@@ -1,4 +1,6 @@
-package com.qzz.demo2;
+package com.qzz.demo2.fragment;
+
+import com.qzz.demo2.fragment.base.BaseFragment;
 
 public class ProfileFragment extends BaseFragment {
 

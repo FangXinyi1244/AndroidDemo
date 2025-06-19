@@ -1,4 +1,4 @@
-package com.qzz.demo2;
+package com.qzz.demo2.fragment.base;
 
 // BaseFragment.java
 import android.content.Context;
@@ -14,6 +14,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.qzz.demo2.callback.FragmentCallback;
+import com.qzz.demo2.R;
 
 public abstract class BaseFragment extends Fragment {
 

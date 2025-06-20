@@ -56,3 +56,19 @@ ContenProvider内容提供者负责提供数据服务，在注册文件中声明
 
 
 
+## 实习第五天
+
+安卓权限管控相关概念，按实现分为动态权限管控和静态权限管控，按管控级别分为普通管控、敏感管控（危险管控）、系统管控
+
+网络通信实现基于okhttp客户端方式和Retrofit编程增强网络通信方案
+
+学习Handler机制，主要包括Message、MessageQueue、Looper、Handler，处理机制类似消息队列机制，Looper管理消息队列（线程唯一），Handler绑定Looper并进行消息的发送和接收处理。Handler机制实现了线程间非阻塞通信，对于一些耗时任务或者复杂后台任务需要实时更新UI主线程具有很大的帮助
+
+本地存储方案，包括sharedPreferences、MMKV、SQLite存储方案，当前安卓系统默认SQLite引擎，通过相关依赖库或者SQLite3命令行工具进行本地数据库管理
+
+
+
+
+
+
+

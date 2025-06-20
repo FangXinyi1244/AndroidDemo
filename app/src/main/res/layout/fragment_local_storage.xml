@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/local_storage_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:padding="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/refresh_info" />
+
+    <TextView
+        android:id="@+id/refresh_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="每5秒自动刷新，展示5条数据"
+        android:textSize="14sp"
+        android:padding="16dp"
+        android:textColor="@color/text_secondary_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/empty_local_storage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="本地存储为空"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/refresh_progress"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/refresh_info"
+        app:layout_constraintEnd_toStartOf="@id/refresh_info"
+        app:layout_constraintTop_toTopOf="@id/refresh_info" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements FragmentCallback 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // 跳转到另一个Activity（例如 SecondActivity）
-        Intent intent = new Intent(MainActivity.this, ServiceActivity.class);
+        Intent intent = new Intent(MainActivity.this, HttpActivity.class);
         startActivity(intent);
 //        initViews();
 //        setupViewPager();

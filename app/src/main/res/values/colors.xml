@@ -5,4 +5,13 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="saved_button_color">#4CAF50</color>
+    <color name="primary_color">#2196F3</color>
+    <color name="primary_dark_color">#1976D2</color>
+    <color name="accent_color">#FF4081</color>
+    <color name="background_color">#F5F5F5</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="text_primary_color">#212121</color>
+    <color name="text_secondary_color">#757575</color>
+    <color name="divider_color">#BDBDBD</color>
 </resources>

@@ -73,6 +73,7 @@ public class HttpActivity extends AppCompatActivity implements FragmentInteracti
     private SearchService searchService;
     private boolean isServiceBound = false;
     private boolean isLocalStorageRefreshing = false;
+//    private int currentPage = 1; // 当前页码
     // 本地存储数据定时刷新任务
     private Runnable localStorageRefreshTask = new Runnable() {
         @Override
@@ -174,6 +175,7 @@ public class HttpActivity extends AppCompatActivity implements FragmentInteracti
         // 搜索输入框监听
         searchEditText.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+//                currentPage = 1; // 重置页码
                 performSearch();
                 return true;
             }
@@ -207,6 +209,7 @@ public class HttpActivity extends AppCompatActivity implements FragmentInteracti
 //        }
         hideKeyboard();
 
+
         if (isServiceBound && searchService != null) {
             // 通过Service执行搜索
             searchService.searchGames(query, 1, 20, new SearchService.SearchCallback() {
@@ -214,7 +217,7 @@ public class HttpActivity extends AppCompatActivity implements FragmentInteracti
                 public void onSearchSuccess(List<Game> games) {
                     mainHandler.post(() -> {
                         // 保存搜索结果到本地数据库
-                        saveGamesToDatabase(games);
+//                        saveGamesToDatabase(games);
 
                         // 更新搜索结果Fragment
                         if (searchResultsFragment != null) {
@@ -339,6 +342,21 @@ public class HttpActivity extends AppCompatActivity implements FragmentInteracti
         if (mainHandler != null) {
             mainHandler.removeCallbacksAndMessages(null);
         }
+
+        if (databaseExecutor != null && !databaseExecutor.isShutdown()) {
+            // 立即终止所有任务（慎用shutdownNow，可能丢失数据）
+            databaseExecutor.shutdownNow();
+
+            // 或优雅关闭（等待现有任务完成）
+            // dbExecutor.shutdown();
+            // try {
+            //     if (!dbExecutor.awaitTermination(5, TimeUnit.SECONDS)) {
+            //         dbExecutor.shutdownNow();
+            //     }
+            // } catch (InterruptedException e) {
+            //     dbExecutor.shutdownNow();
+            // }
+        }
     }
     // ViewPager2适配器
     private static class MainPagerAdapter extends FragmentStateAdapter {
@@ -373,16 +391,20 @@ public class HttpActivity extends AppCompatActivity implements FragmentInteracti
     // 实现接口方法
     @Override
     public void onSearchRequested(String query) {
+        // 设置搜索输入框内容并执行搜索
+//        currentPage = 1; // 重置页码
         searchEditText.setText(query);
         performSearch();
     }
     @Override
     public void onLoadMoreRequested() {
+//        currentPage++;
         loadMoreSearchResults();
     }
     @Override
     public void onGameSaved(Game game, OnSaveResultCallback callback) {
-        new Thread(() -> {
+        Toast.makeText(this, "正在下载游戏: " + game.getGameName(), Toast.LENGTH_SHORT).show();
+        databaseExecutor.execute(() -> {
             try {
                 List<Game> gameToSave = Arrays.asList(game);
                 int result = gameDAO.insertGames(gameToSave);
@@ -398,11 +420,11 @@ public class HttpActivity extends AppCompatActivity implements FragmentInteracti
                 Log.e(TAG, "保存游戏失败", e);
                 mainHandler.post(() -> callback.onSaveFailure(e.getMessage()));
             }
-        }).start();
+        });
     }
     @Override
     public void onGameDeleted(long gameId, OnDeleteResultCallback callback) {
-        new Thread(() -> {
+        databaseExecutor.execute(() -> {
             try {
                 int result = gameDAO.deleteGame(gameId);
 
@@ -417,13 +439,13 @@ public class HttpActivity extends AppCompatActivity implements FragmentInteracti
                 Log.e(TAG, "删除游戏失败", e);
                 mainHandler.post(() -> callback.onDeleteFailure(e.getMessage()));
             }
-        }).start();
+        });
     }
 
     // 公共方法供Fragment调用
     public void loadMoreSearchResults() {
         String query = searchEditText.getText().toString().trim();
-        if (!query.isEmpty() && isServiceBound && searchService != null) {
+        if (isServiceBound && searchService != null) {
             searchService.loadMoreGames(query);
         }
     }

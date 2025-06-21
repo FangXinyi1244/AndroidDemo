@@ -4,97 +4,84 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="8dp"
+    android:layout_margin="6dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="2dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:orientation="vertical"
+        android:padding="12dp">
 
         <ImageView
             android:id="@+id/game_image"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             android:background="@drawable/bg_game_image"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:contentDescription="游戏图片" />
 
         <TextView
             android:id="@+id/game_title"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
             android:text="游戏标题"
             android:textColor="@color/text_primary_color"
             android:textSize="16sp"
             android:textStyle="bold"
             android:maxLines="1"
-            android:ellipsize="end"
-            app:layout_constraintEnd_toStartOf="@id/save_button"
-            app:layout_constraintStart_toEndOf="@id/game_image"
-            app:layout_constraintTop_toTopOf="@id/game_image" />
+            android:ellipsize="end" />
 
         <TextView
             android:id="@+id/game_description"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="8dp"
-            android:maxLines="2"
+            android:minLines="1"
+            android:maxLines="3"
             android:ellipsize="end"
             android:text="游戏描述内容..."
             android:textColor="@color/text_secondary_color"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toStartOf="@id/save_button"
-            app:layout_constraintStart_toEndOf="@id/game_image"
-            app:layout_constraintTop_toBottomOf="@id/game_title" />
+            android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/game_category"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/bg_category_tag"
-            android:paddingHorizontal="8dp"
-            android:paddingVertical="2dp"
-            android:text="分类"
-            android:textColor="@color/primary_color"
-            android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@id/game_image"
-            app:layout_constraintTop_toBottomOf="@id/game_description" />
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/game_score"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/score"
-            app:layout_constraintStart_toEndOf="@id/game_category"
-            app:layout_constraintTop_toBottomOf="@id/game_description" />
+            <TextView
+                android:id="@+id/game_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_category_tag"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                android:text="分类"
+                android:textColor="@color/primary_color"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/game_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/score" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/save_button"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
             android:backgroundTint="@color/primary_color"
             android:minHeight="40dp"
-            android:paddingHorizontal="16dp"
-            android:text="保存"
+            android:text="下载"
             android:textColor="@android:color/white"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@id/game_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/game_image" />
+            android:textSize="14sp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

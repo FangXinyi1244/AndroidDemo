@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.qzz.demo2.MainActivity;
@@ -33,6 +34,9 @@ import java.util.List;
 public class SearchResultsFragment extends Fragment {
     private static final String TAG = "SearchResultsFragment";
 
+    // 设置瀑布流列数
+    private static final int SPAN_COUNT = 2;
+
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private ProgressBar loadMoreProgress;
@@ -43,6 +47,7 @@ public class SearchResultsFragment extends Fragment {
     private FragmentInteractionListener listener;
     private boolean isLoading = false;
     private String currentQuery = "";
+    private StaggeredGridLayoutManager layoutManager;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -89,37 +94,47 @@ public class SearchResultsFragment extends Fragment {
             public void onSaveGame(Game game, int position) {
                 saveGameToDatabase(game, position);
             }
-
             @Override
             public void onGameClick(Game game) {
                 Toast.makeText(getContext(), "点击了游戏: " + game.getGameName(), Toast.LENGTH_SHORT).show();
             }
         });
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        // 使用StaggeredGridLayoutManager替代LinearLayoutManager
+        layoutManager = new StaggeredGridLayoutManager(SPAN_COUNT, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-
-        // 添加滚动监听，实现上拉加载更多
+        // 添加滚动监听，实现上拉加载更多，适配瀑布流布局
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                Log.d(TAG, "onScrolled: dx=" + dx + ", dy=" + dy + ", isLoading=" + isLoading);
+                if (dy > 0 && !isLoading) {
+                    int[] lastVisibleItemPositions = layoutManager.findLastVisibleItemPositions(null);
+                    int visibleItemCount = recyclerView.getChildCount();
+                    int totalItemCount = layoutManager.getItemCount();
 
-                if (dy > 0 && !isLoading && !currentQuery.isEmpty()) {
-                    LinearLayoutManager lm = (LinearLayoutManager) recyclerView.getLayoutManager();
-                    if (lm != null) {
-                        int visibleItemCount = lm.getChildCount();
-                        int totalItemCount = lm.getItemCount();
-                        int pastVisibleItems = lm.findFirstVisibleItemPosition();
+                    // 获取最后可见项位置
+                    int lastVisibleItemPosition = getMaxPosition(lastVisibleItemPositions);
 
-                        if ((visibleItemCount + pastVisibleItems) >= totalItemCount - 5) {
-                            loadMoreResults();
-                        }
+                    // 当距离底部还有5个item时开始加载更多
+                    if ((lastVisibleItemPosition + 1) >= totalItemCount - 5) {
+                        loadMoreResults();
                     }
                 }
             }
         });
+    }
+
+    // 辅助方法：获取最大位置索引
+    private int getMaxPosition(int[] positions) {
+        int maxPosition = Integer.MIN_VALUE;
+        for (int position : positions) {
+            if (position > maxPosition) {
+                maxPosition = position;
+            }
+        }
+        return maxPosition;
     }
 
     private void setupSwipeRefresh() {
@@ -130,7 +145,7 @@ public class SearchResultsFragment extends Fragment {
                 android.R.color.holo_red_light);
 
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            if (!currentQuery.isEmpty() && listener != null) {
+            if (listener != null) {
                 listener.onSearchRequested(currentQuery);
             } else {
                 swipeRefreshLayout.setRefreshing(false);

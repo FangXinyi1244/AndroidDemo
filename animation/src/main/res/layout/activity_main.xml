@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <!-- 目标动画视图 -->
+        <ImageView
+            android:id="@+id/target_imageview"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:foreground="@drawable/ic_launcher_foreground"
+            android:background="@drawable/circle_background"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <!-- 控制面板 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/control_panel_background"
+            android:padding="16dp">
+
+            <!-- 缩放控制 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="缩放倍率"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0.5x"
+                    android:minWidth="40dp" />
+
+                <SeekBar
+                    android:id="@+id/scale_seekbar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="200"
+                    android:progress="150" />
+
+                <TextView
+                    android:id="@+id/scale_value_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1.5x"
+                    android:minWidth="50dp"
+                    android:gravity="end" />
+            </LinearLayout>
+
+            <!-- 旋转控制 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="旋转角度"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0°"
+                    android:minWidth="40dp" />
+
+                <SeekBar
+                    android:id="@+id/rotation_seekbar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="1080"
+                    android:progress="720" />
+
+                <TextView
+                    android:id="@+id/rotation_value_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="720°"
+                    android:minWidth="60dp"
+                    android:gravity="end" />
+            </LinearLayout>
+
+            <!-- 透明度控制 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="透明度"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0%"
+                    android:minWidth="40dp" />
+
+                <SeekBar
+                    android:id="@+id/alpha_seekbar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:max="100"
+                    android:progress="80" />
+
+                <TextView
+                    android:id="@+id/alpha_value_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="80%"
+                    android:minWidth="50dp"
+                    android:gravity="end" />
+            </LinearLayout>
+
+<!--            &lt;!&ndash; 开始动画按钮 &ndash;&gt;-->
+<!--            <Button-->
+<!--                android:id="@+id/start_animation_btn"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="24dp"-->
+<!--                android:text="开始动画"-->
+<!--                android:textSize="16sp"-->
+<!--                android:padding="12dp" />-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/white">
+
+            <!-- 目标视图 -->
+            <View
+                android:id="@+id/target_view"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/target_view_background"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <!-- 控制面板 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="2"
+                android:background="@drawable/control_panel_background"
+                android:layout_margin="16dp">
+
+                <!-- 动画状态显示 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="📊 当前动画数量"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#4A5568" />
+
+                    <TextView
+                        android:id="@+id/animation_count_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#667EEA"
+                        android:background="#EDF2F7"
+                        android:padding="8dp"
+                        android:minWidth="40dp"
+                        android:gravity="center"
+                        android:layout_marginStart="8dp" />
+                </LinearLayout>
+
+                <!-- 当前动画类型显示 -->
+                <TextView
+                    android:id="@+id/current_animation_type_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="🎯 当前动画类型: X轴旋转"
+                    android:textSize="14sp"
+                    android:textColor="#718096"
+                    android:layout_marginBottom="16dp"
+                    android:padding="12dp"
+                    android:background="#F7FAFC"
+                    android:gravity="center" />
+
+                <!-- 重置按钮 -->
+                <Button
+                    android:id="@+id/reset_property_animation_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="🔄 重置动画状态"
+                    android:textSize="16sp"
+                    android:textColor="#E53E3E"
+                    android:background="@android:color/transparent"
+                    android:padding="12dp"
+                    android:layout_marginBottom="16dp" />
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

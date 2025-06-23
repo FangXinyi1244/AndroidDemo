@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TagCloudView">
+        <!-- 布局属性 -->
+        <attr name="tag_horizontal_margin" format="dimension" />
+        <attr name="tag_vertical_margin" format="dimension" />
+        <attr name="tag_line_spacing" format="dimension" />
+        <attr name="tag_max_lines" format="integer" />
+        <attr name="tag_gravity" format="enum">
+            <enum name="left" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+
+        <!-- 滚动属性 -->
+        <attr name="tag_scrollable" format="boolean" />
+        <attr name="tag_scroll_direction" format="enum">
+            <enum name="both" value="0" />
+            <enum name="horizontal" value="1" />
+            <enum name="vertical" value="2" />
+        </attr>
+        <attr name="tag_scroll_damping" format="float" />
+        <attr name="tag_overscroll_strength" format="float" />
+
+        <!-- 动画属性 -->
+        <attr name="tag_animation_duration" format="integer" />
+        <attr name="tag_enable_ripple" format="boolean" />
+    </declare-styleable>
+</resources>

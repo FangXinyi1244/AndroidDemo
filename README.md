@@ -91,7 +91,25 @@ ContenProvider内容提供者负责提供数据服务，在注册文件中声明
 
 
 
+## 实习第七天
 
+学习有关于Anroid开发的动画设置
+
+-  基础使用帧动画，预先设定多帧连续的XML动画文件，通过在ImageView等View组件中布局该文件，并设置AnimationDrawable对象的启动方法，实现动画。本质上是多个连续静态帧的顺序UI刷新
+- 进阶采用补间动画，补间动画的实现需要预先定义好View组件的首尾帧状态或实现内容，通过AnimationUtils工具类对效果进行插值补充，并返回Animation类对象，将该类对象加载到相应View组件中实现动画效果（主要有放缩、平移、旋转、透明度、组合）
+- 高阶方案采用属性动画，相比于通过静态的XML文件预定义的补间动画，属性动画采用一系列的ObjectAnimator对象和AnimatorSet集合方式，动态定义对象属性和组合方式，实现更高灵活度的animation动画设置
+
+
+
+
+
+## 实习第八天
+
+关于自定义组件控件的学习
+
+- 基础View组件包括TextView、Button、EditView等，可以作为ViewGroup中的集合对象
+- ViewGroup是View组件的组合控件，类似于一个布局容器，但是具有自己独特的生命周期方法和自定义属性，常用的控件包括RecycleView、ViewPaper、SmartRefreshView等都属于ViewGroup
+- 自定义ViewGroup需要继承实现ViewGroup父类，可以通过XML文件设定基础属性定义，在继承的实现类中重写相关生命周期方法、属性以及监听事件，并在主Avtivity的视图组件中通过包路径引入相应View标签
 
 
 

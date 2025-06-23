@@ -23,3 +23,5 @@ rootProject.name = "Demo2"
 include(":app")
 include(":mylibrary")
 include(":compenenttest")
+include(":animation")
+include(":tagcloud")
